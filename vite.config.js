@@ -8,15 +8,14 @@ const outDir = resolve(__dirname, 'docs')
 export default defineConfig({
   root,
   plugins: [react()],
-  base: '/112-1-web-app-demo/',
+  base: '/week9-web-app-2/',
   build: {
     outDir,
     emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(root, 'main/index.html'),
-        week5: resolve(root, 'week5/index.html'),
-        week6: resolve(root,'week6/index.html')
+        week9: resolve(root, 'week9/index.html')
       }
     }
   }
