@@ -26,11 +26,20 @@ export default function GalleryCardAction() {
 
 // transition: fade, https://mui.com/material-ui/transitions/#fade
 function ProjectRating({ ratingOpen = false }) {
+
+    const [rate, setRate] = useState(null)
+
+
     return (
         <>
             <Box>
                 <Fade in={ratingOpen} timeout={300}>
-                    <Rating name="project-rating" value={null} max={5}
+                    <Rating name="project-rating" value={rate} max={5}
+                    onChange = {(e, v)=>{
+                        console.log(e)
+                        console.log(v)
+                        setRate(v)
+                    }}
                     />
                 </Fade>
             </Box>
