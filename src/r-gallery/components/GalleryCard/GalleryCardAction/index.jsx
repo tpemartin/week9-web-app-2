@@ -2,8 +2,15 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import { Box, Fade, Rating, Stack } from '@mui/material';
 import GradeIcon from '@mui/icons-material/Grade';
 import CloseIcon from '@mui/icons-material/Close';
+import { useState } from 'react';
 
-export default function GalleryCardAction({ ratingOpen = false }) {
+export default function GalleryCardAction() {
+
+    const [ratingOpen, setRatingOpen] = useState(false)
+
+    const toggleRatingOpen = () => {
+        setRatingOpen(ratingOpen => !ratingOpen)
+    }
 
     return (
         <>
@@ -11,7 +18,7 @@ export default function GalleryCardAction({ ratingOpen = false }) {
                 sx={{ justifyContent: "space-between" }}>
                 <GitHubIcon />
                 <ProjectRating ratingOpen={ratingOpen} />
-                <ActionControl ratingOpen={ratingOpen} />
+                <ActionControl ratingOpen={ratingOpen} onClick={toggleRatingOpen} />
             </Stack>
         </>
     )
@@ -31,9 +38,9 @@ function ProjectRating({ ratingOpen = false }) {
     )
 }
 
-function ActionControl({ ratingOpen = false }) {
+function ActionControl({ ratingOpen = false, onClick }) {
 
-    const actionControl = ratingOpen ? <CloseIcon /> : <GradeIcon />
+    const actionControl = ratingOpen ? <CloseIcon onClick={onClick}/> : <GradeIcon onClick={onClick}/>
 
     return (
         <>
